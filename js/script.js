@@ -130,3 +130,21 @@
     updateDots();
   });
 })();
+
+(function () {
+  "use strict";
+
+  document.querySelectorAll(".email-link").forEach(function (link) {
+    const user = "ericnnguyen2109";
+    const domain = "gmail";
+    const tld = "com";
+    const email = user + "@" + domain + "." + tld;
+
+    link.textContent = email;
+
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      window.location.href = "mailto:" + email;
+    });
+  });
+})();
