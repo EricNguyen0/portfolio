@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Jersey Generator — Case Study | Eric Nguyen</title>
+<meta name="description" content="How I built and upgraded a WooCommerce configurator for custom team jerseys — product configuration, tiered pricing, multi-currency and bilingual EN/FR commerce.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">Eric Nguyen</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html#work" data-i18n="nav.work">Work</a></li>
+        <li><a href="index.html#capabilities" data-i18n="nav.capabilities">Capabilities</a></li>
+        <li><a href="index.html#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-toggle" data-lang-toggle aria-label="Switch language">FR</button>
+      <button class="icon-toggle" data-theme-toggle aria-label="Switch theme">DARK</button>
+      <button class="mobile-toggle" data-menu-toggle aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="cs-nav-strip" aria-label="Case study sections">
+  <div class="wrap">
+    <a href="#overview" data-i18n="jg.nav.overview">Overview</a>
+    <a href="#challenge" data-i18n="jg.nav.challenge">Challenge</a>
+    <a href="#role" data-i18n="jg.nav.role">Role</a>
+    <a href="#product-thinking" data-i18n="jg.nav.product">Product Thinking</a>
+    <a href="#ux" data-i18n="jg.nav.ux">UX</a>
+    <a href="#technical" data-i18n="jg.nav.technical">Technical</a>
+    <a href="#testing" data-i18n="jg.nav.testing">Testing</a>
+    <a href="#outcome" data-i18n="jg.nav.outcome">Outcome</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="cs-hero" id="overview" data-cs-section>
+    <div class="wrap">
+      <img src="assets/images/jersey-generator/logo-wordmark.webp" alt="The Jersey Generator logo" style="height:5rem;width:auto;margin-bottom:1.5rem;">
+      <p class="eyebrow" data-i18n="jg.tag">Flagship Case Study — E-commerce Product Systems</p>
+      <h1 style="font-size:clamp(2.25rem,5vw,4rem);max-width:20ch;" data-i18n="jg.hero.title">Configuring a custom product, at scale, in two languages.</h1>
+      <p style="font-size:1.15rem;max-width:56ch;margin-top:1.5rem;" data-i18n="jg.hero.sub">The Jersey Generator is a live WooCommerce platform where individuals and teams design and order custom hockey, baseball, basketball, soccer, lacrosse, volleyball, and football uniforms — with logos, names, numbers, and finish options configured per jersey.</p>
+      <div class="cs-meta">
+        <div><span data-i18n="jg.meta.role.label">Role</span><strong>Associate Product Manager</strong></div>
+        <div><span data-i18n="jg.meta.platform.label">Platform</span><strong>WooCommerce + Fancy Product Designer</strong></div>
+        <div><span data-i18n="jg.meta.scope.label">Scope</span><strong data-i18n="jg.meta.scope.value">Product configuration, pricing, localization</strong></div>
+        <div><span data-i18n="jg.meta.site.label">Live site</span><strong><a href="https://thejerseygenerator.com" target="_blank" rel="noopener">thejerseygenerator.com</a></strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="challenge" data-cs-section>
+    <div class="wrap cs-two-col">
+      <div>
+        <p class="eyebrow" data-i18n="jg.challenge.eyebrow">The Challenge</p>
+        <h2 style="font-size:2rem;" data-i18n="jg.challenge.title">A simple idea, a genuinely complex product.</h2>
+        <figure class="cs-figure" style="margin-top:2.5rem;">
+          <img src="assets/images/jersey-generator/the_jersey_generator_cover.jpg" alt="The Jersey Generator storefront">
+          <figcaption data-i18n="jg.challenge.caption">The storefront is built to handle dozens of team templates across seven sports, each with its own configurable options.</figcaption>
+        </figure>
+      </div>
+      <div>
+        <p data-i18n="jg.challenge.intro">"Design your own jersey" sounds like one decision. In the actual storefront, it's a stack of choices happening at once, and they all affect each other:</p>
+        <ul style="color:var(--text-secondary);">
+          <li data-i18n="jg.challenge.li1"><strong style="color:var(--text-primary);">Style attributes</strong> — lace color (no lace / black / white) and application method (embroidered vs. sublimated), each of which changes production and price.</li>
+          <li data-i18n="jg.challenge.li2"><strong style="color:var(--text-primary);">Per-player detail</strong> — quantity, size, name, number, and captaincy status, all required before checkout.</li>
+          <li data-i18n="jg.challenge.li3"><strong style="color:var(--text-primary);">Tiered pricing</strong> — each jersey is sold as a price range (e.g. <strong>$59.99–$93.98</strong>) rather than a flat price, depending on the variant combination selected.</li>
+          <li data-i18n="jg.challenge.li4"><strong style="color:var(--text-primary);">Localization</strong> — the storefront runs in English and French (<code>/fr/</code>) with a USD/CAD currency switcher, across dozens of product templates.</li>
+          <li data-i18n="jg.challenge.li5"><strong style="color:var(--text-primary);">Volume</strong> — one core configurator has to hold up across seven sports and a large, constantly-refreshed catalog of team templates.</li>
+        </ul>
+        <p data-i18n="jg.challenge.outro">None of that is supposed to look like complexity to the person buying a jersey. It's just supposed to feel like picking one.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="role" data-cs-section>
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="jg.role.eyebrow">My Role</p>
+      <h2 style="font-size:2rem;max-width:22ch;" data-i18n="jg.role.title">I sit between what a jersey order needs and what the customer sees.</h2>
+      <div class="cs-two-col" style="margin-top:2.5rem;">
+        <div>
+          <p data-i18n="jg.role.intro">I came in after the storefront was already live, and I upgraded the front-end configurator to the functionality it runs on today. Day to day, that's meant working on:</p>
+        </div>
+        <div class="cs-grid-2">
+          <div class="decision-block"><div class="label" data-i18n="jg.role.b1.label">Product</div><p data-i18n="jg.role.b1.body">How variant options, quantity logic, and required fields (size, name, number, captaincy) are structured per product.</p></div>
+          <div class="decision-block"><div class="label" data-i18n="jg.role.b2.label">Pricing</div><p data-i18n="jg.role.b2.body">How lace, application method, and quantity combine into the price range a customer actually sees.</p></div>
+          <div class="decision-block"><div class="label" data-i18n="jg.role.b3.label">Localization</div><p data-i18n="jg.role.b3.body">Keeping the EN/FR storefront and currency behavior consistent across product templates.</p></div>
+          <div class="decision-block"><div class="label" data-i18n="jg.role.b4.label">Coordination</div><p data-i18n="jg.role.b4.body">Working with developers to test the configurator against how WooCommerce actually records the order.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="product-thinking" data-cs-section>
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="jg.product.eyebrow">Product Thinking</p>
+      <h2 style="font-size:2rem;max-width:22ch;" data-i18n="jg.product.title">Every jersey is priced as a range, not a number.</h2>
+      <blockquote class="pull-quote" data-i18n="jg.product.quote">The real price only resolves once someone's actually picked lace, application, and quantity — so I never wanted the storefront pretending otherwise.</blockquote>
+      <div class="cs-two-col reverse" style="margin-top:2.5rem;">
+        <div>
+          <p data-i18n="jg.product.body1">The question I kept coming back to wasn't "what does a jersey cost," it was whether the price on screen actually reflected the combination a customer was building, before they committed to it. Get that wrong and you either surprise someone at checkout or quietly give away margin on options that were priced too low.</p>
+          <p data-i18n="jg.product.body2">Quantity, size, name, number, captaincy — I made all five required at the configurator level, not because it's cleaner UX in the abstract, but because a jersey missing any one of them literally can't be produced. Catching that upfront protects both what the customer expects and what production actually gets.</p>
+        </div>
+        <div class="cs-figure">
+          <img src="assets/images/jersey-generator/campaign_eagle.png" alt="Custom hockey jersey with eagle mascot design, an example of the finished configurable product">
+          <figcaption data-i18n="jg.product.caption">Style attributes like lace color and lettering treatment are part of what the configurator has to price and produce correctly.</figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ux" data-cs-section>
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="jg.ux.eyebrow">UX</p>
+      <h2 style="font-size:2rem;max-width:24ch;" data-i18n="jg.ux.title">Making a seven-field form feel like "design your jersey."</h2>
+      <div class="cs-grid-3" style="margin-top:2rem;">
+        <div class="decision-block"><div class="label" data-i18n="jg.ux.b1.label">Progressive disclosure</div><p data-i18n="jg.ux.b1.body">Style attributes (lace, application) come before player details, so the customer never sees every field at once.</p></div>
+        <div class="decision-block"><div class="label" data-i18n="jg.ux.b2.label">Visible price range</div><p data-i18n="jg.ux.b2.body">The price range shows up front on every product, before configuration starts — the ceiling and floor are never a surprise.</p></div>
+        <div class="decision-block"><div class="label" data-i18n="jg.ux.b3.label">Persistent design state</div><p data-i18n="jg.ux.b3.body">A "Share Design" link lets someone send a configured jersey to teammates without making them redo the whole thing.</p></div>
+      </div>
+      <div class="cs-figure" style="margin-top:2.5rem;">
+        <div class="swiper" data-swiper>
+          <div class="swiper-track">
+            <figure class="swiper-slide"><img src="assets/images/jersey-generator/configurator-jersey.jpg" alt="Screenshot of The Jersey Generator's configurator showing the jersey layers panel, colors, and text customization"></figure>
+            <figure class="swiper-slide"><img src="assets/images/jersey-generator/configurator-socks.jpg" alt="Screenshot of The Jersey Generator's configurator showing the sock color layers panel"></figure>
+          </div>
+          <div class="swiper-controls">
+            <button class="swiper-btn" data-swiper-prev aria-label="Previous screenshot">←</button>
+            <div class="swiper-dots"><button class="dot"></button><button class="dot"></button></div>
+            <button class="swiper-btn" data-swiper-next aria-label="Next screenshot">→</button>
+          </div>
+        </div>
+        <p class="swiper-caption" data-i18n="jg.ux.caption">The actual configurator interface — jersey and socks share the same layers-and-color-swatch pattern, so a customer already knows how to use it by the time they get to the second piece.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="technical" data-cs-section>
+    <div class="wrap cs-two-col">
+      <div class="cs-sticky">
+        <p class="eyebrow" data-i18n="jg.tech.eyebrow">Technical Implementation</p>
+        <h2 style="font-size:2rem;" data-i18n="jg.tech.title">What's actually running underneath.</h2>
+        <p data-i18n="jg.tech.intro">The storefront runs on <strong style="color:var(--text-primary);">WordPress + WooCommerce</strong>, with a Fancy Product Designer configurator layered on top of WooCommerce's native variation system to handle logo upload, text, and per-jersey customization — this is the tool I upgraded to its current functionality.</p>
+      </div>
+      <div>
+        <ul style="color:var(--text-secondary);">
+          <li data-i18n="jg.tech.li1"><strong style="color:var(--text-primary);">Variable products</strong> — lace color and application method are modeled as WooCommerce product variations, each with its own price point that rolls up into the displayed price range.</li>
+          <li data-i18n="jg.tech.li2"><strong style="color:var(--text-primary);">Front-end configuration</strong> — quantity, size, name, number, and captaincy are captured as structured order data per jersey, not free text, so it flows cleanly into fulfillment.</li>
+          <li data-i18n="jg.tech.li3"><strong style="color:var(--text-primary);">Localization</strong> — the site serves an English store at the root and a French store at <code>/fr/</code>, consistent with a Polylang-based setup, alongside a USD/CAD currency switcher in the header and footer.</li>
+          <li data-i18n="jg.tech.li4"><strong style="color:var(--text-primary);">Order data</strong> — because every field is required before checkout, the WooCommerce order record for a jersey line item carries everything production needs, cutting down on back-and-forth after the sale.</li>
+        </ul>
+        <p style="margin-top:1.5rem;" data-i18n="jg.tech.outro">None of that shows up in a screenshot. The configurator only feels simple because the WooCommerce structure underneath it — variations, required meta fields, price rules — was built to match how a jersey actually gets produced, not just how it looks on screen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testing" data-cs-section>
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="jg.testing.eyebrow">Testing &amp; Iteration</p>
+      <h2 style="font-size:2rem;max-width:26ch;" data-i18n="jg.testing.title">Every combination, in both languages, in both currencies.</h2>
+      <p style="max-width:60ch;" data-i18n="jg.testing.body">Price, required fields, and language/currency all interact, so testing a single product actually means testing it across variant combinations, both languages, and both currencies — then checking that what lands in the WooCommerce order matches what the customer configured on screen.</p>
+    </div>
+  </section>
+
+  <section id="outcome" data-cs-section>
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="jg.outcome.eyebrow">Final Experience</p>
+      <h2 style="font-size:2rem;" data-i18n="jg.outcome.title">It feels simple. The system behind it isn't.</h2>
+    </div>
+    <div class="wrap cs-grid-3" style="margin-top:1rem;">
+      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-buzz-saws.png" alt="Finished custom hockey jersey with crest and lace detail"></figure>
+      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-hard.png" alt="Finished custom hockey jersey with bold lettering"></figure>
+      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-reinforced.png" alt="Finished custom hockey jersey with reinforced shoulder detailing and star patches"></figure>
+    </div>
+    <div class="wrap" style="margin-top:2.5rem;">
+      <p data-i18n="jg.closing" style="max-width:58ch;font-size:.9375rem;font-style:italic;">This one's still live — the configurator I upgraded is the one people are ordering jerseys through right now, not a snapshot of it.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="project-nav">
+  <a href="index.html#work"><div class="dir" data-i18n="jg.nav.back">← Back to</div><h3 data-i18n="jg.nav.backTitle">Selected Work</h3></a>
+  <a href="aera-sports.html"><div class="dir" data-i18n="jg.nav.nextLabel">Next project →</div><h3>ÆRA Sports</h3></a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span data-i18n="footer.rights">Designed &amp; built by Eric Nguyen.</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script src="js/translations.js"></script>
+<script src="js/translations-cs.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
