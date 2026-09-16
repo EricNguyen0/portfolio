@@ -148,3 +148,51 @@
     });
   });
 })();
+
+
+(function () {
+  "use strict";
+
+  const modal = document.getElementById("videoModal");
+  const frame = document.getElementById("videoFrame");
+  const closeBtn = modal?.querySelector(".video-modal-close");
+  const backdrop = modal?.querySelector(".video-modal-backdrop");
+
+  if (!modal || !frame) return;
+
+  document.querySelectorAll(".supporting-media-trigger").forEach(function (trigger) {
+    trigger.addEventListener("click", function () {
+      const videoId = trigger.dataset.video;
+
+      if (!videoId) return;
+
+      frame.src =
+        "https://www.youtube.com/embed/" +
+        videoId +
+        "?autoplay=1&rel=0";
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("video-modal-open");
+    });
+  });
+
+  function closeVideo() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    // Stop playback when closing
+    frame.src = "";
+
+    document.body.classList.remove("video-modal-open");
+  }
+
+  closeBtn?.addEventListener("click", closeVideo);
+  backdrop?.addEventListener("click", closeVideo);
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeVideo();
+    }
+  });
+})();

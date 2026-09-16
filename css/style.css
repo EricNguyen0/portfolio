@@ -408,3 +408,136 @@ footer.site-footer { border-top: 1px solid var(--border); padding: 2rem 0; }
 [lang-hidden] { display: none !important; }
 
 
+.supporting-media-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.supporting-media-trigger .work-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.supporting-media-trigger img {
+  display: block;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.supporting-media-trigger:hover img {
+  transform: scale(1.025);
+}
+
+.video-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #101c2c;
+  font-size: 17px;
+  padding-left: 3px;
+  opacity: 0;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.supporting-media-trigger:hover .video-play,
+.supporting-media-trigger:focus-visible .video-play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.video-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 10, 18, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.video-modal-content {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 100%);
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.video-frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.video-modal-close {
+  position: absolute;
+  z-index: 2;
+  right: -12px;
+  top: -12px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #101c2c;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+body.video-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .video-modal {
+    padding: 16px;
+  }
+
+  .video-modal-close {
+    right: -6px;
+    top: -46px;
+  }
+
+  .video-play {
+    opacity: 1;
+  }
+}
