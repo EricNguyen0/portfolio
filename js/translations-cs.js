@@ -156,6 +156,39 @@
     "aera.ecom.hero.cap4": { en: "Pink — same treatment, same lighting setup, different colorway.", fr: "Rose — même traitement, même configuration d'éclairage, autre coloris." },
 
 
+/* ===================== ÆRA COLORWAYS (GALLERY DATA) ===================== */
+    "aera.gallery.blackChrome.title": { en: "Black Chrome", fr: "Chrome Noir" },
+    "aera.gallery.blackChrome.desc": {
+      en: "The Black Mirror colorway combines a dark frame with a reflective chrome lens.",
+      fr: "Le coloris Miroir Noir combine une monture foncée avec une lentille réfléchissante en chrome."
+    },
+    "aera.gallery.blueSteel.title": { en: "Blue Steel", fr: "Acier Bleu" },
+    "aera.gallery.blueSteel.desc": {
+      en: "The Blue Steel colorway pairs a cool blue-toned frame with a blue mirrored lens. The render emphasizes the product's streamlined geometry and lightweight frameless design.",
+      fr: "Le coloris Acier Bleu associe une monture aux tons bleus frais à une lentille miroir bleue. Le rendu met en valeur la géométrie épurée du produit et son design sans monture léger."
+    },
+    "aera.gallery.fire.title": { en: "Fire", fr: "Feu" },
+    "aera.gallery.fire.desc": {
+      en: "The Fire colorway creates a warm monochromatic look through its amber frame and matching mirrored lens. The studio render focuses on the shape, construction, and reflective finish of the eyewear.",
+      fr: "Le coloris Feu crée un style monochrome chaleureux grâce à sa monture ambrée et sa lentille miroir assortie. Le rendu studio met l'accent sur la forme, la fabrication et la finition réfléchissante des lunettes."
+    },
+    "aera.gallery.blushwave.title": { en: "Blushwave", fr: "Blushwave" },
+    "aera.gallery.blushwave.desc": {
+      en: "Blushwave combines a soft pink frame with a rose mirrored lens. The image demonstrates how ÆRA's minimal product form can be paired with a more expressive color treatment.",
+      fr: "Blushwave combine une monture rose doux avec une lentille miroir rosée. L'image démontre comment la forme minimale des produits ÆRA peut être associée à un traitement de couleur plus expressif."
+    },
+    "aera.gallery.teal.title": { en: "Teal", fr: "Sarcelle" },
+    "aera.gallery.teal.desc": {
+      en: "The Teal colorway combines a translucent teal frame with a contrasting gold mirrored lens. This render highlights the relationship between the frame material, lens treatment, and overall product silhouette.",
+      fr: "Le coloris Sarcelle combine une monture translucide couleur sarcelle avec une lentille miroir dorée contrastante. Ce rendu met en valeur la relation entre le matériau de la monture, le traitement de la lentille et la silhouette globale du produit."
+    },
+    "aera.gallery.clear.title": { en: "Clear", fr: "Transparent" },
+    "aera.gallery.clear.desc": {
+      en: "The Clear colorway uses a transparent frame and clear mirrored lens for a restrained, lightweight visual aesthetic. The image makes the frameless construction and overall geometry particularly visible.",
+      fr: "Le coloris Transparent utilise une monture transparente et une lentille miroir claire pour une esthétique visuelle sobre et légère. L'image rend la construction sans monture et la géométrie globale particulièrement visibles."
+    },
+
+
     "aera.mkt.eyebrow": { en: "Marketplace — Amazon A+ Content", fr: "Marché en ligne — Contenu A+ Amazon" },
     "aera.mkt.title": { en: "Rebuilding the same brand for a channel with no custom layout.", fr: "Reconstruire la même marque pour un canal sans mise en page personnalisée." },
     "aera.mkt.body1": {
