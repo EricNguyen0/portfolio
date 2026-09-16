@@ -196,3 +196,76 @@
     }
   });
 })();
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('imageModalImage');
+  const modalTitle = document.getElementById('imageModalTitle');
+  const modalDescription = document.getElementById('imageModalDescription');
+  const closeButton = document.getElementById('imageModalClose');
+
+  if (!modal) {
+    console.error('Image modal: #imageModal not found.');
+    return;
+  }
+
+  const images = document.querySelectorAll('.js-image-modal');
+
+  console.log('Image modal initialized.');
+  console.log('Clickable images found:', images.length);
+
+
+  /* Open modal */
+  images.forEach(function (figure) {
+
+    figure.addEventListener('click', function () {
+
+      const image = figure.querySelector('img');
+
+      if (!image) return;
+
+      modalImage.src =
+      figure.dataset.modalImage ||
+      image.currentSrc ||
+      image.src;
+      modalImage.alt = image.alt || '';
+
+      modalTitle.textContent =
+        figure.dataset.title || 'ÆRA Sports';
+
+      modalDescription.textContent =
+        figure.dataset.description || '';
+
+      modal.showModal();
+
+    });
+
+  });
+
+
+  /* Close button */
+  closeButton.addEventListener('click', function () {
+    modal.close();
+  });
+
+
+  /* Click outside the white modal content */
+  modal.addEventListener('click', function (event) {
+
+    if (event.target === modal) {
+      modal.close();
+    }
+
+  });
+
+
+  /* Clear image when closed */
+  modal.addEventListener('close', function () {
+    modalImage.src = '';
+  });
+
+});
+
