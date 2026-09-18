@@ -1,271 +1,249 @@
 /* =========================================================
-   ERIC NGUYEN — PORTFOLIO
-   Theme (dark/light), mobile nav, and a small client-side
-   i18n system driven by data-i18n keys + a translations
-   dictionary. No backend, no frameworks — GitHub Pages safe.
+   ERIC NGUYEN — PORTFOLIO (High-Performance Engine)
+   Consolidated modules: Theme, i18n, Nav, Video Modal,
+   Image Modal, Swiper, and Observers.
    ========================================================= */
 
-(function () {
+document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
-  /* ---------------- Theme ---------------- */
-  var root = document.documentElement;
-  var storedTheme = localStorage.getItem("theme");
-  var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  var theme = storedTheme || (prefersDark ? "dark" : "light");
-  root.setAttribute("data-theme", theme);
+  const root = document.documentElement;
 
-  function updateThemeLabel() {
-    var btn = document.querySelector("[data-theme-toggle]");
+  /* ---------------- 1. Theme Management ---------------- */
+  const storedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const currentTheme = storedTheme || (prefersDark ? "dark" : "light");
+  root.setAttribute("data-theme", currentTheme);
+
+  const updateThemeLabel = () => {
+    const btn = document.querySelector("[data-theme-toggle]");
     if (btn) btn.textContent = root.getAttribute("data-theme") === "dark" ? "LIGHT" : "DARK";
-  }
+  };
   updateThemeLabel();
 
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-theme-toggle]");
-    if (!btn) return;
-    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    updateThemeLabel();
-  });
+  /* ---------------- 2. Language / i18n System ---------------- */
+  let currentLang = localStorage.getItem("lang") || "en";
 
-  /* ---------------- Mobile nav ---------------- */
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-menu-toggle]");
-    if (!btn) return;
-    var nav = document.querySelector(".nav-links");
-    if (nav) nav.classList.toggle("open");
-  });
-  document.querySelectorAll(".nav-links a").forEach(function (a) {
-    a.addEventListener("click", function () {
-      var nav = document.querySelector(".nav-links");
+  const applyLang = (lang) => {
+    root.setAttribute("lang", lang);
+
+    // Text content
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      const dict = window.I18N?.[key];
+      if (dict?.[lang]) el.innerHTML = dict[lang];
+    });
+
+    // Dynamic attributes
+    document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
+      const pairs = el.getAttribute("data-i18n-attr").split(",");
+      pairs.forEach((pair) => {
+        const [attr, key] = pair.split(":").map((s) => s.trim());
+        const dict = window.I18N?.[key];
+        if (dict?.[lang]) el.setAttribute(attr, dict[lang]);
+      });
+    });
+
+    const btn = document.querySelector("[data-lang-toggle]");
+    if (btn) btn.textContent = lang === "en" ? "FR" : "EN";
+  };
+
+  applyLang(currentLang);
+
+  /* ---------------- 3. Global Click Delegation ---------------- */
+  // Handles theme toggle, lang toggle, menu toggle, and modal triggers cleanly without extra listeners
+  document.addEventListener("click", (e) => {
+    // Theme Toggle
+    if (e.target.closest("[data-theme-toggle]")) {
+      const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("theme", nextTheme);
+      updateThemeLabel();
+      return;
+    }
+
+    // Language Toggle
+    if (e.target.closest("[data-lang-toggle]")) {
+      currentLang = currentLang === "en" ? "fr" : "en";
+      localStorage.setItem("lang", currentLang);
+      applyLang(currentLang);
+      return;
+    }
+
+    // Mobile Navigation Toggle
+    if (e.target.closest("[data-menu-toggle]")) {
+      const nav = document.querySelector(".nav-links");
+      if (nav) nav.classList.toggle("open");
+      return;
+    }
+
+    // Mobile Navigation Close on Link Click
+    if (e.target.closest(".nav-links a")) {
+      const nav = document.querySelector(".nav-links");
       if (nav) nav.classList.remove("open");
+      return;
+    }
+
+    // Video Modal Trigger
+    const videoTrigger = e.target.closest(".supporting-media-trigger");
+    if (videoTrigger) {
+      openVideoModal(videoTrigger.dataset.video);
+      return;
+    }
+
+    // Image Modal Trigger
+    const imageTrigger = e.target.closest(".js-image-modal");
+    if (imageTrigger) {
+      openImageModal(imageTrigger);
+      return;
+    }
+  });
+
+  /* ---------------- 4. Email Obfuscation ---------------- */
+  document.querySelectorAll(".email-link").forEach((link) => {
+    const email = "ericnnguyen2109@gmail.com";
+    link.textContent = email;
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = `mailto:${email}`;
     });
   });
 
-  /* ---------------- Language ---------------- */
-  var LANG_KEY = "lang";
-  var lang = localStorage.getItem(LANG_KEY) || "en";
+  /* ---------------- 5. Intersection Observer Navigation ---------------- */
+  const sections = document.querySelectorAll("[data-cs-section]");
+  const navLinks = document.querySelectorAll(".cs-nav-strip a");
 
-  function applyLang(l) {
-    document.documentElement.setAttribute("lang", l);
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      var dict = window.I18N && window.I18N[key];
-      if (dict && dict[l]) el.innerHTML = dict[l];
-    });
-    document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
-      var pairs = el.getAttribute("data-i18n-attr").split(",");
-      pairs.forEach(function (pair) {
-        var parts = pair.split(":");
-        var attr = parts[0].trim();
-        var key = parts[1].trim();
-        var dict = window.I18N && window.I18N[key];
-        if (dict && dict[l]) el.setAttribute(attr, dict[l]);
-      });
-    });
-    var btn = document.querySelector("[data-lang-toggle]");
-    if (btn) btn.textContent = l === "en" ? "FR" : "EN";
-  }
-
-  applyLang(lang);
-
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-lang-toggle]");
-    if (!btn) return;
-    lang = lang === "en" ? "fr" : "en";
-    localStorage.setItem(LANG_KEY, lang);
-    applyLang(lang);
-  });
-
-  /* ---------------- Case-study section nav: active state ---------------- */
-  var sections = document.querySelectorAll("[data-cs-section]");
-  var navLinks = document.querySelectorAll(".cs-nav-strip a");
   if (sections.length && navLinks.length && "IntersectionObserver" in window) {
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (l) { l.classList.remove("active"); });
-          var match = document.querySelector('.cs-nav-strip a[href="#' + entry.target.id + '"]');
-          if (match) match.classList.add("active");
-        }
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    sections.forEach(function (s) { obs.observe(s); });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((l) => l.classList.remove("active"));
+            const match = document.querySelector(`.cs-nav-strip a[href="#${entry.target.id}"]`);
+            if (match) match.classList.add("active");
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
   }
-  /* ---------------- Swiper (lightweight, dependency-free) ---------------- */
-  document.querySelectorAll('[data-swiper]').forEach(function (swiper) {
-    var track = swiper.querySelector('.swiper-track');
-    var slides = swiper.querySelectorAll('.swiper-slide');
-    var dots = swiper.querySelectorAll('.dot');
-    var prevBtn = swiper.querySelector('[data-swiper-prev]');
-    var nextBtn = swiper.querySelector('[data-swiper-next]');
+
+  /* ---------------- 6. Lightweight Swiper Engine ---------------- */
+  document.querySelectorAll("[data-swiper]").forEach((swiper) => {
+    const track = swiper.querySelector(".swiper-track");
+    const slides = swiper.querySelectorAll(".swiper-slide");
+    const dots = swiper.querySelectorAll(".dot");
+    const prevBtn = swiper.querySelector("[data-swiper-prev]");
+    const nextBtn = swiper.querySelector("[data-swiper-next]");
+
     if (!track || !slides.length) return;
 
-    function goTo(index) {
-      index = Math.max(0, Math.min(index, slides.length - 1));
-      track.scrollTo({ left: slides[index].offsetLeft, behavior: 'smooth' });
-    }
-    function currentIndex() {
-      var scrollLeft = track.scrollLeft;
-      var closest = 0, closestDist = Infinity;
-      slides.forEach(function (s, i) {
-        var dist = Math.abs(s.offsetLeft - scrollLeft);
-        if (dist < closestDist) { closestDist = dist; closest = i; }
+    const goTo = (index) => {
+      const targetIndex = Math.max(0, Math.min(index, slides.length - 1));
+      track.scrollTo({ left: slides[targetIndex].offsetLeft, behavior: "smooth" });
+    };
+
+    const getCurrentIndex = () => {
+      const scrollLeft = track.scrollLeft;
+      let closest = 0;
+      let closestDist = Infinity;
+      slides.forEach((s, i) => {
+        const dist = Math.abs(s.offsetLeft - scrollLeft);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = i;
+        }
       });
       return closest;
-    }
-    function updateDots() {
-      var idx = currentIndex();
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
-    }
-    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(currentIndex() - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(currentIndex() + 1); });
-    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
-    track.addEventListener('scroll', function () {
-      window.clearTimeout(track._scrollTimer);
-      track._scrollTimer = window.setTimeout(updateDots, 80);
-    });
+    };
+
+    const updateDots = () => {
+      const idx = getCurrentIndex();
+      dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+    };
+
+    prevBtn?.addEventListener("click", () => goTo(getCurrentIndex() - 1));
+    nextBtn?.addEventListener("click", () => goTo(getCurrentIndex() + 1));
+    dots.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+
+    // Debounced scroll listener with passive performance enhancement
+    let scrollTimer;
+    track.addEventListener(
+      "scroll",
+      () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(updateDots, 60);
+      },
+      { passive: true }
+    );
+
     updateDots();
   });
-})();
 
-(function () {
-  "use strict";
+  /* ---------------- 7. Video Modal Module ---------------- */
+  const videoModal = document.getElementById("videoModal");
+  const videoFrame = document.getElementById("videoFrame");
+  const videoCloseBtn = videoModal?.querySelector(".video-modal-close");
+  const videoBackdrop = videoModal?.querySelector(".video-modal-backdrop");
 
-  document.querySelectorAll(".email-link").forEach(function (link) {
-    const user = "ericnnguyen2109";
-    const domain = "gmail";
-    const tld = "com";
-    const email = user + "@" + domain + "." + tld;
+  function openVideoModal(videoId) {
+    if (!videoModal || !videoFrame || !videoId) return;
+    videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    videoModal.classList.add("is-open");
+    videoModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("video-modal-open");
+  }
 
-    link.textContent = email;
-
-    link.addEventListener("click", function (event) {
-      event.preventDefault();
-      window.location.href = "mailto:" + email;
-    });
-  });
-})();
-
-
-(function () {
-  "use strict";
-
-  const modal = document.getElementById("videoModal");
-  const frame = document.getElementById("videoFrame");
-  const closeBtn = modal?.querySelector(".video-modal-close");
-  const backdrop = modal?.querySelector(".video-modal-backdrop");
-
-  if (!modal || !frame) return;
-
-  document.querySelectorAll(".supporting-media-trigger").forEach(function (trigger) {
-    trigger.addEventListener("click", function () {
-      const videoId = trigger.dataset.video;
-
-      if (!videoId) return;
-
-      frame.src =
-        "https://www.youtube.com/embed/" +
-        videoId +
-        "?autoplay=1&rel=0";
-
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("video-modal-open");
-    });
-  });
-
-  function closeVideo() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-
-    // Stop playback when closing
-    frame.src = "";
-
+  function closeVideoModal() {
+    if (!videoModal) return;
+    videoModal.classList.remove("is-open");
+    videoModal.setAttribute("aria-hidden", "true");
+    if (videoFrame) videoFrame.src = ""; // Ceases background playback audio
     document.body.classList.remove("video-modal-open");
   }
 
-  closeBtn?.addEventListener("click", closeVideo);
-  backdrop?.addEventListener("click", closeVideo);
+  videoCloseBtn?.addEventListener("click", closeVideoModal);
+  videoBackdrop?.addEventListener("click", closeVideoModal);
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
-      closeVideo();
+  /* ---------------- 8. Native Image Modal (<dialog>) ---------------- */
+  const imgModal = document.getElementById("imageModal");
+  const modalImage = document.getElementById("imageModalImage");
+  const modalTitle = document.getElementById("imageModalTitle");
+  const modalDescription = document.getElementById("imageModalDescription");
+  const imgCloseBtn = document.getElementById("imageModalClose");
+
+  function openImageModal(figure) {
+    if (!imgModal) return;
+    const img = figure.querySelector("img");
+    if (!img) return;
+
+    if (modalImage) {
+      modalImage.src = figure.dataset.modalImage || img.currentSrc || img.src;
+      modalImage.alt = img.alt || "";
     }
-  });
-})();
+    if (modalTitle) modalTitle.textContent = figure.dataset.title || "ÆRA Sports";
+    if (modalDescription) modalDescription.textContent = figure.dataset.description || "";
 
-
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  const modal = document.getElementById('imageModal');
-  const modalImage = document.getElementById('imageModalImage');
-  const modalTitle = document.getElementById('imageModalTitle');
-  const modalDescription = document.getElementById('imageModalDescription');
-  const closeButton = document.getElementById('imageModalClose');
-
-  if (!modal) {
-    console.error('Image modal: #imageModal not found.');
-    return;
+    imgModal.showModal();
   }
 
-  const images = document.querySelectorAll('.js-image-modal');
+  imgCloseBtn?.addEventListener("click", () => imgModal?.close());
 
-  console.log('Image modal initialized.');
-  console.log('Clickable images found:', images.length);
-
-
-  /* Open modal */
-  images.forEach(function (figure) {
-
-    figure.addEventListener('click', function () {
-
-      const image = figure.querySelector('img');
-
-      if (!image) return;
-
-      modalImage.src =
-      figure.dataset.modalImage ||
-      image.currentSrc ||
-      image.src;
-      modalImage.alt = image.alt || '';
-
-      modalTitle.textContent =
-        figure.dataset.title || 'ÆRA Sports';
-
-      modalDescription.textContent =
-        figure.dataset.description || '';
-
-      modal.showModal();
-
-    });
-
+  imgModal?.addEventListener("click", (e) => {
+    if (e.target === imgModal) imgModal.close();
   });
 
-
-  /* Close button */
-  closeButton.addEventListener('click', function () {
-    modal.close();
+  imgModal?.addEventListener("close", () => {
+    if (modalImage) modalImage.src = "";
   });
 
-
-  /* Click outside the white modal content */
-  modal.addEventListener('click', function (event) {
-
-    if (event.target === modal) {
-      modal.close();
+  /* ---------------- 9. Global Escape Key Listener ---------------- */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (videoModal?.classList.contains("is-open")) {
+        closeVideoModal();
+      }
     }
-
   });
-
-
-  /* Clear image when closed */
-  modal.addEventListener('close', function () {
-    modalImage.src = '';
-  });
-
 });
-

@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ma Boussole — Featured Project | Eric Nguyen</title>
-<meta name="description" content="An Earth Day campaign for Ma Boussole, a concept waste-sorting app — posters, UI mockups, mascot design, and motion.">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma Boussole — Featured Project | Eric Nguyen</title>
+  <meta name="description" content="An Earth Day campaign for Ma Boussole, a concept waste-sorting app — posters, UI mockups, mascot design, and motion.">
+  
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta property="og:image" content="assets/og/og-default.jpg">
+  <meta name="twitter:image" content="assets/og/og-default.jpg">
+
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Application Logic & Internationalization (Deferred) -->
+  <script src="js/translations.js" defer></script>
+  <script src="js/translations-cs.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 <body>
 
@@ -39,7 +55,6 @@
     <a href="#concept" data-i18n="mb.nav.concept">The App Concept</a>
     <a href="#campaign" data-i18n="mb.nav.campaign">Campaign</a>
     <a href="#video" data-i18n="mb.nav.video">Video &amp; Motion</a>
-    <!-- <a href="#outcome" data-i18n="mb.nav.outcome">Outcome</a> -->
   </div>
 </nav>
 
@@ -57,7 +72,7 @@
       </div>
     </div>
     <figure class="cs-figure wrap">
-      <img src="assets/images/ma-boussole/poster-selfie.png" alt="Ma Boussole poster asking 'Un selfie?' with the app's mascot standing on a phone">
+      <img src="assets/images/ma-boussole/poster-selfie.png" alt="Ma Boussole poster asking 'Un selfie?' with the app's mascot standing on a phone" decoding="async">
       <figcaption data-i18n="mb.hero.caption">One of four campaign posters: the mascot pitches the app's core trick — scan an item, and Ma Boussole recognizes the material and shape well enough to tell you which bin it belongs in.</figcaption>
     </figure>
   </section>
@@ -95,7 +110,7 @@
   <section id="concept" data-cs-section>
     <div class="wrap cs-two-col reverse">
       <div class="cs-figure">
-        <img src="assets/images/ma-boussole/mascot.png" alt="Five mockup phone screens showing the Ma Boussole app: waste category scan, recycling tip, ecology news, plant fact, and a map of nearby bins">
+        <img src="assets/images/ma-boussole/mascot.png" alt="Five mockup phone screens showing the Ma Boussole app: waste category scan, recycling tip, ecology news, plant fact, and a map of nearby bins" loading="lazy" decoding="async">
         <figcaption data-i18n="mb.concept.caption">The concept's four core features, shown across five mocked-up app screens.</figcaption>
       </div>
       <div>
@@ -119,21 +134,21 @@
     </div>
     <div class="wrap cs-grid-3" style="margin-top:2rem;">
       <figure class="cs-figure2">
-        <img src="assets/images/ma-boussole/poster-lost.png" alt="Poster reading 'Tu es perdu? Retrouve-toi avec Ma Boussole' showing buildings on a phone screen">
+        <img src="assets/images/ma-boussole/poster-lost.png" alt="Poster reading 'Tu es perdu? Retrouve-toi avec Ma Boussole' showing buildings on a phone screen" loading="lazy" decoding="async">
         <figcaption data-i18n="mb.campaign.cap1">"Tu es perdu?" — finds every recycling center and bin in the neighborhood.</figcaption>
       </figure>
       <figure class="cs-figure2">
-        <img src="assets/images/ma-boussole/poster-trees.png" alt="Poster reading 'Combien d'arbres j'aurai sauvé? Suis tes réussites avec Ma Boussole' showing trees on a phone screen">
+        <img src="assets/images/ma-boussole/poster-trees.png" alt="Poster reading 'Combien d'arbres j'aurai sauvé? Suis tes réussites avec Ma Boussole' showing trees on a phone screen" loading="lazy" decoding="async">
         <figcaption data-i18n="mb.campaign.cap2">"Combien d'arbres j'aurai sauvé?" — turns recycling into a trackable, personal number.</figcaption>
       </figure>
       <figure class="cs-figure2">
-        <img src="assets/images/ma-boussole/poster-news.png" alt="Poster reading 'Dépassé.e des nouvelles? Sois à jour sur l'écologie avec Ma Boussole' showing a newspaper on a phone screen">
+        <img src="assets/images/ma-boussole/poster-news.png" alt="Poster reading 'Dépassé.e des nouvelles? Sois à jour sur l'écologie avec Ma Boussole' showing a newspaper on a phone screen" loading="lazy" decoding="async">
         <figcaption data-i18n="mb.campaign.cap3">"Dépassé.e des nouvelles?" — folds ecology news into the same app.</figcaption>
       </figure>
     </div>
     <div class="wrap cs-two-col reverse" style="margin-top:3rem;">
       <div class="cs-figure">
-        <img src="assets/images/ma-boussole/app-screens.webp" alt="Ma Boussole mascot: a friendly rounded character wearing a brown hat, used across the whole campaign">
+        <img src="assets/images/ma-boussole/app-screens.webp" alt="Ma Boussole mascot: a friendly rounded character wearing a brown hat, used across the whole campaign" loading="lazy" decoding="async">
         <figcaption data-i18n="mb.campaign.mascot.caption">The mascot ties every poster, screen, and motion piece back to one consistent, approachable character.</figcaption>
       </div>
       <div>
@@ -174,8 +189,5 @@
   </div>
 </footer>
 
-<script src="js/translations.js"></script>
-<script src="js/translations-cs.js"></script>
-<script src="js/script.js"></script>
 </body>
 </html>

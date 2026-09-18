@@ -1,21 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ÆRA Sports — Case Study | Eric Nguyen</title>
-<meta name="description" content="How I work across Shopify development, content strategy, and team leadership for a premium watersport eyewear brand.">
-<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
-<link rel="icon" href="assets/icons/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-<meta property="og:image" content="assets/og/og-default.jpg">
-<meta name="twitter:image" content="assets/og/og-default.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÆRA Sports — Case Study | Eric Nguyen</title>
+  <meta name="description" content="How I work across Shopify development, content strategy, and team leadership for a premium watersport eyewear brand.">
+  
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta property="og:image" content="assets/og/og-default.jpg">
+  <meta name="twitter:image" content="assets/og/og-default.jpg">
+
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 3D Model Viewer & Application Logic (Deferred) -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <script src="js/translations.js" defer></script>
+  <script src="js/translations-cs.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 <body>
 
@@ -66,7 +73,7 @@
         <div><span data-i18n="aera.meta.role.label">Role</span><strong>Digital Marketing Coordinator</strong></div>
         <div><span data-i18n="aera.meta.platform.label">Platform</span><strong>Shopify</strong></div>
         <div><span data-i18n="aera.meta.scope.label">Scope</span><strong data-i18n="aera.meta.scope.value">Storefront development, content strategy, team leadership</strong></div>
-        <div><span data-i18n="aera.meta.site.label">Live site</span><strong><a href="https://www.aerasports.com" target="_blank" rel="noopener">aerasports.com</a></strong></div>
+        <div><span data-i18n="aera.meta.site.label">Live site</span><strong><a href="https://www.aerasports.com" target="_blank" rel="noopener noreferrer">aerasports.com</a></strong></div>
       </div>
     </div>
   </section>
@@ -112,7 +119,7 @@
         <div class="decision-block"><div class="label" data-i18n="aera.ecom.b2.label">Retailer proof</div><p data-i18n="aera.ecom.b2.body">A scrolling wall of authorized retailer logos (Sports Experts, Divers Direct, and others) signals ÆRA exists beyond its own site.</p></div>
         <div class="decision-block"><div class="label" data-i18n="aera.ecom.b3.label">Verified reviews</div><p data-i18n="aera.ecom.b3.body">Product pages carry star ratings and photo-backed reviews, adding third-party proof next to the sales copy.</p></div>
       </div>
-        <div class="cs-grid-2" style="margin-top:1.5rem;">
+      <div class="cs-grid-2" style="margin-top:1.5rem;">
         <figure class="cs-figure"><img src="assets/images/aera-sports/campaign-black-mirror.webp" alt="ÆRA Black Mirror campaign creative with product on abstract background" loading="lazy" decoding="async"><figcaption data-i18n="aera.ecom.cap1">Black Mirror — the same product from the studio shot above, restyled for a campaign post.</figcaption></figure>
         <figure class="cs-figure"><img src="assets/images/aera-sports/campaign-clear-2.webp" alt="ÆRA Clear campaign creative, 'See Things Clearly' messaging over ocean imagery" loading="lazy" decoding="async"><figcaption data-i18n="aera.ecom.cap2">Clear — the anti-fog benefit translated into a plain-language headline.</figcaption></figure>
       </div>
@@ -220,87 +227,67 @@
       <h2 style="font-size:2rem;" data-i18n="aera.outcome.title">One product, six stories, one price.</h2>
     </div>
     <div class="wrap cs-grid-3" style="margin-top:1rem;">
-      
-<figure class="cs-figure js-image-modal"
-  data-title="Black Mirror"
-  data-description="The Black Mirror colorway combines a dark frame with a reflective chrome lens."
-  data-i18n-attr="data-title:aera.gallery.blackMirror.title, data-description:aera.gallery.blackMirror.desc"
-  data-modal-image="assets/images/aera-sports/Render_Front_Tilted3.png">
-  <img src="assets/images/aera-sports/product-black-chrome.webp" alt="ÆRA black mirror eyewear" loading="lazy" decoding="async">
-</figure>
+      <figure class="cs-figure js-image-modal"
+        data-title="Black Mirror"
+        data-description="The Black Mirror colorway combines a dark frame with a reflective chrome lens."
+        data-i18n-attr="data-title:aera.gallery.blackMirror.title, data-description:aera.gallery.blackMirror.desc"
+        data-modal-image="assets/images/aera-sports/Render_Front_Tilted3.png">
+        <img src="assets/images/aera-sports/product-black-chrome.webp" alt="ÆRA black mirror eyewear" loading="lazy" decoding="async">
+      </figure>
 
-<figure class="cs-figure js-image-modal"
-  data-title="Blue Steel"
-  data-description="The Blue Steel colorway pairs a cool blue-toned frame with a blue mirrored lens. The render emphasizes the product's streamlined geometry and lightweight frameless design."
-  data-i18n-attr="data-title:aera.gallery.blueSteel.title, data-description:aera.gallery.blueSteel.desc"
-  data-modal-image="assets/images/aera-sports/Render_Front_Tilted8.png">
-  <img src="assets/images/aera-sports/product-blue.webp" alt="ÆRA eyewear, bluesteel frame with blue chrome mirrored lens, studio product photography" loading="lazy" decoding="async">
-</figure>
+      <figure class="cs-figure js-image-modal"
+        data-title="Blue Steel"
+        data-description="The Blue Steel colorway pairs a cool blue-toned frame with a blue mirrored lens. The render emphasizes the product's streamlined geometry and lightweight frameless design."
+        data-i18n-attr="data-title:aera.gallery.blueSteel.title, data-description:aera.gallery.blueSteel.desc"
+        data-modal-image="assets/images/aera-sports/Render_Front_Tilted8.png">
+        <img src="assets/images/aera-sports/product-blue.webp" alt="ÆRA eyewear, bluesteel frame with blue chrome mirrored lens, studio product photography" loading="lazy" decoding="async">
+      </figure>
 
-<figure class="cs-figure js-image-modal"
-  data-title="Fire"
-  data-description="The Fire colorway creates a warm monochromatic look through its amber frame and matching mirrored lens. The studio render focuses on the shape, construction, and reflective finish of the eyewear."
-  data-i18n-attr="data-title:aera.gallery.fire.title, data-description:aera.gallery.fire.desc"
-  data-modal-image="assets/images/aera-sports/Render_Front_Tilted6.png">
-  <img src="assets/images/aera-sports/product-amber.webp" alt="ÆRA eyewear, amber frame with amber chrome mirrored lens, studio product photography" loading="lazy" decoding="async">
-</figure>
+      <figure class="cs-figure js-image-modal"
+        data-title="Fire"
+        data-description="The Fire colorway creates a warm monochromatic look through its amber frame and matching mirrored lens. The studio render focuses on the shape, construction, and reflective finish of the eyewear."
+        data-i18n-attr="data-title:aera.gallery.fire.title, data-description:aera.gallery.fire.desc"
+        data-modal-image="assets/images/aera-sports/Render_Front_Tilted6.png">
+        <img src="assets/images/aera-sports/product-amber.webp" alt="ÆRA eyewear, amber frame with amber chrome mirrored lens, studio product photography" loading="lazy" decoding="async">
+      </figure>
 
-<figure class="cs-figure js-image-modal"
-  data-title="Blushwave"
-  data-description="Blushwave combines a soft pink frame with a rose mirrored lens. The image demonstrates how ÆRA's minimal product form can be paired with a more expressive color treatment."
-  data-i18n-attr="data-title:aera.gallery.blushwave.title, data-description:aera.gallery.blushwave.desc"
-  data-modal-image="assets/images/aera-sports/Render_Front_Tilted7.png">
-  <img src="assets/images/aera-sports/product-pink.webp" alt="ÆRA eyewear, blushwave frame with rose mirrored lens, studio product photography" loading="lazy" decoding="async">
-</figure>
+      <figure class="cs-figure js-image-modal"
+        data-title="Blushwave"
+        data-description="Blushwave combines a soft pink frame with a rose mirrored lens. The image demonstrates how ÆRA's minimal product form can be paired with a more expressive color treatment."
+        data-i18n-attr="data-title:aera.gallery.blushwave.title, data-description:aera.gallery.blushwave.desc"
+        data-modal-image="assets/images/aera-sports/Render_Front_Tilted7.png">
+        <img src="assets/images/aera-sports/product-pink.webp" alt="ÆRA eyewear, blushwave frame with rose mirrored lens, studio product photography" loading="lazy" decoding="async">
+      </figure>
 
-<figure class="cs-figure js-image-modal"
-  data-title="Emerald"
-  data-description="The Emerald colorway combines a translucent emerald frame with a contrasting gold mirrored lens. This render highlights the relationship between the frame material, lens treatment, and overall product silhouette."
-  data-i18n-attr="data-title:aera.gallery.emerald.title, data-description:aera.gallery.emerald.desc"
-  data-modal-image="assets/images/aera-sports/Render_Front_Tilted5.png">
-  <img src="assets/images/aera-sports/product-teal.webp" alt="ÆRA eyewear, emerald frame with gold mirrored lens, studio product photography" loading="lazy" decoding="async">
-</figure>
+      <figure class="cs-figure js-image-modal"
+        data-title="Emerald"
+        data-description="The Emerald colorway combines a translucent emerald frame with a contrasting gold mirrored lens. This render highlights the relationship between the frame material, lens treatment, and overall product silhouette."
+        data-i18n-attr="data-title:aera.gallery.emerald.title, data-description:aera.gallery.emerald.desc"
+        data-modal-image="assets/images/aera-sports/Render_Front_Tilted5.png">
+        <img src="assets/images/aera-sports/product-teal.webp" alt="ÆRA eyewear, emerald frame with gold mirrored lens, studio product photography" loading="lazy" decoding="async">
+      </figure>
 
-<figure class="cs-figure js-image-modal"
-  data-title="Clear"
-  data-description="The Clear colorway uses a transparent frame and clear mirrored lens for a restrained, lightweight visual aesthetic. The image makes the frameless construction and overall geometry particularly visible."
-  data-i18n-attr="data-title:aera.gallery.clear.title, data-description:aera.gallery.clear.desc"
-  data-modal-image="assets/images/aera-sports/Render_Front_Tilted4.png">
-  <img src="assets/images/aera-sports/product-clear.webp" alt="ÆRA eyewear, clear frame with clear mirrored lens, studio product photography" loading="lazy" decoding="async">
-</figure>
+      <figure class="cs-figure js-image-modal"
+        data-title="Clear"
+        data-description="The Clear colorway uses a transparent frame and clear mirrored lens for a restrained, lightweight visual aesthetic. The image makes the frameless construction and overall geometry particularly visible."
+        data-i18n-attr="data-title:aera.gallery.clear.title, data-description:aera.gallery.clear.desc"
+        data-modal-image="assets/images/aera-sports/Render_Front_Tilted4.png">
+        <img src="assets/images/aera-sports/product-clear.webp" alt="ÆRA eyewear, clear frame with clear mirrored lens, studio product photography" loading="lazy" decoding="async">
+      </figure>
 
-
-<dialog id="imageModal" class="image-modal">
-
-  <div class="image-modal__inner">
-
-    <button
-      type="button"
-      class="image-modal__close"
-      id="imageModalClose"
-      aria-label="Close image">
-      &times;
-    </button>
-
-    <div class="image-modal__media">
-      <img id="imageModalImage" src="" alt="">
-    </div>
-
-    <div class="image-modal__info">
-
-      <p class="image-modal__eyebrow">ÆRA SPORTS</p>
-
-      <h2 id="imageModalTitle"></h2>
-
-      <p id="imageModalDescription"></p>
-
-    </div>
-
-  </div>
-
-</dialog>
-
-      
+      <dialog id="imageModal" class="image-modal">
+        <div class="image-modal__inner">
+          <button type="button" class="image-modal__close" id="imageModalClose" aria-label="Close image">&times;</button>
+          <div class="image-modal__media">
+            <img id="imageModalImage" src="" alt="">
+          </div>
+          <div class="image-modal__info">
+            <p class="image-modal__eyebrow">ÆRA SPORTS</p>
+            <h2 id="imageModalTitle"></h2>
+            <p id="imageModalDescription"></p>
+          </div>
+        </div>
+      </dialog>
     </div>
     <div class="wrap" style="margin-top:2.5rem;">
       <p data-i18n="aera.closing" style="max-width:58ch;font-size:.9375rem;font-style:italic;">The storefront, the Amazon listing, and the Instagram feed are three different constraints on the same brand — most of my job here is making sure they don't contradict each other.</p>
@@ -321,8 +308,5 @@
   </div>
 </footer>
 
-<script src="js/translations.js"></script>
-<script src="js/translations-cs.js"></script>
-<script src="js/script.js"></script>
 </body>
 </html>

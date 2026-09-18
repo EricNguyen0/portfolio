@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Jersey Generator — Case Study | Eric Nguyen</title>
-<meta name="description" content="How I built and upgraded a WooCommerce configurator for custom team jerseys — product configuration, tiered pricing, multi-currency and bilingual EN/FR commerce.">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Jersey Generator — Case Study | Eric Nguyen</title>
+  <meta name="description" content="How I built and upgraded a WooCommerce configurator for custom team jerseys — product configuration, tiered pricing, multi-currency and bilingual EN/FR commerce.">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Non-blocking Deferred Scripts -->
+  <script src="js/translations.js" defer></script>
+  <script src="js/translations-cs.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 <body>
 
@@ -48,7 +55,7 @@
 
   <section class="cs-hero" id="overview" data-cs-section>
     <div class="wrap">
-      <img src="assets/images/jersey-generator/logo-wordmark.webp" alt="The Jersey Generator logo" style="height:5rem;width:auto;margin-bottom:1.5rem;">
+      <img src="assets/images/jersey-generator/logo-wordmark.webp" alt="The Jersey Generator logo" style="height:5rem;width:auto;margin-bottom:1.5rem;" decoding="async">
       <p class="eyebrow" data-i18n="jg.tag">Flagship Case Study — E-commerce Product Systems</p>
       <h1 style="font-size:clamp(2.25rem,5vw,4rem);max-width:20ch;" data-i18n="jg.hero.title">Configuring a custom product, at scale, in two languages.</h1>
       <p style="font-size:1.15rem;max-width:56ch;margin-top:1.5rem;" data-i18n="jg.hero.sub">The Jersey Generator is a live WooCommerce platform where individuals and teams design and order custom hockey, baseball, basketball, soccer, lacrosse, volleyball, and football uniforms — with logos, names, numbers, and finish options configured per jersey.</p>
@@ -56,7 +63,7 @@
         <div><span data-i18n="jg.meta.role.label">Role</span><strong>Associate Product Manager</strong></div>
         <div><span data-i18n="jg.meta.platform.label">Platform</span><strong>WooCommerce + Fancy Product Designer</strong></div>
         <div><span data-i18n="jg.meta.scope.label">Scope</span><strong data-i18n="jg.meta.scope.value">Product configuration, pricing, localization</strong></div>
-        <div><span data-i18n="jg.meta.site.label">Live site</span><strong><a href="https://thejerseygenerator.com" target="_blank" rel="noopener">thejerseygenerator.com</a></strong></div>
+        <div><span data-i18n="jg.meta.site.label">Live site</span><strong><a href="https://thejerseygenerator.com" target="_blank" rel="noopener noreferrer">thejerseygenerator.com</a></strong></div>
       </div>
     </div>
   </section>
@@ -67,7 +74,7 @@
         <p class="eyebrow" data-i18n="jg.challenge.eyebrow">The Challenge</p>
         <h2 style="font-size:2rem;" data-i18n="jg.challenge.title">A simple idea, a genuinely complex product.</h2>
         <figure class="cs-figure" style="margin-top:2.5rem;">
-          <img src="assets/images/jersey-generator/the_jersey_generator_cover.jpg" alt="The Jersey Generator storefront">
+          <img src="assets/images/jersey-generator/the_jersey_generator_cover.jpg" alt="The Jersey Generator storefront" loading="lazy" decoding="async">
           <figcaption data-i18n="jg.challenge.caption">The storefront is built to handle dozens of team templates across seven sports, each with its own configurable options.</figcaption>
         </figure>
       </div>
@@ -114,7 +121,7 @@
           <p data-i18n="jg.product.body2">Quantity, size, name, number, captaincy — I made all five required at the configurator level, not because it's cleaner UX in the abstract, but because a jersey missing any one of them literally can't be produced. Catching that upfront protects both what the customer expects and what production actually gets.</p>
         </div>
         <div class="cs-figure">
-          <img src="assets/images/jersey-generator/campaign_eagle.png" alt="Custom hockey jersey with eagle mascot design, an example of the finished configurable product">
+          <img src="assets/images/jersey-generator/campaign_eagle.png" alt="Custom hockey jersey with eagle mascot design, an example of the finished configurable product" loading="lazy" decoding="async">
           <figcaption data-i18n="jg.product.caption">Style attributes like lace color and lettering treatment are part of what the configurator has to price and produce correctly.</figcaption>
         </div>
       </div>
@@ -133,8 +140,8 @@
       <div class="cs-figure" style="margin-top:2.5rem;">
         <div class="swiper" data-swiper>
           <div class="swiper-track">
-            <figure class="swiper-slide"><img src="assets/images/jersey-generator/configurator-jersey.jpg" alt="Screenshot of The Jersey Generator's configurator showing the jersey layers panel, colors, and text customization"></figure>
-            <figure class="swiper-slide"><img src="assets/images/jersey-generator/configurator-socks.jpg" alt="Screenshot of The Jersey Generator's configurator showing the sock color layers panel"></figure>
+            <figure class="swiper-slide"><img src="assets/images/jersey-generator/configurator-jersey.jpg" alt="Screenshot of The Jersey Generator's configurator showing the jersey layers panel, colors, and text customization" loading="lazy" decoding="async"></figure>
+            <figure class="swiper-slide"><img src="assets/images/jersey-generator/configurator-socks.jpg" alt="Screenshot of The Jersey Generator's configurator showing the sock color layers panel" loading="lazy" decoding="async"></figure>
           </div>
           <div class="swiper-controls">
             <button class="swiper-btn" data-swiper-prev aria-label="Previous screenshot">←</button>
@@ -180,9 +187,9 @@
       <h2 style="font-size:2rem;" data-i18n="jg.outcome.title">It feels simple. The system behind it isn't.</h2>
     </div>
     <div class="wrap cs-grid-3" style="margin-top:1rem;">
-      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-buzz-saws.png" alt="Finished custom hockey jersey with crest and lace detail"></figure>
-      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-hard.png" alt="Finished custom hockey jersey with bold lettering"></figure>
-      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-reinforced.png" alt="Finished custom hockey jersey with reinforced shoulder detailing and star patches"></figure>
+      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-buzz-saws.png" alt="Finished custom hockey jersey with crest and lace detail" loading="lazy" decoding="async"></figure>
+      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-hard.png" alt="Finished custom hockey jersey with bold lettering" loading="lazy" decoding="async"></figure>
+      <figure class="cs-figure"><img src="assets/images/jersey-generator/campaign-reinforced.png" alt="Finished custom hockey jersey with reinforced shoulder detailing and star patches" loading="lazy" decoding="async"></figure>
     </div>
     <div class="wrap" style="margin-top:2.5rem;">
       <p data-i18n="jg.closing" style="max-width:58ch;font-size:.9375rem;font-style:italic;">This one's still live — the configurator I upgraded is the one people are ordering jerseys through right now, not a snapshot of it.</p>
@@ -203,8 +210,5 @@
   </div>
 </footer>
 
-<script src="js/translations.js"></script>
-<script src="js/translations-cs.js"></script>
-<script src="js/script.js"></script>
 </body>
 </html>
